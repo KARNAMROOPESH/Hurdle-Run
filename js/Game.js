@@ -63,7 +63,7 @@ class Game {
         index = index + 1 ;
 
         //position the cars a little away from each other in x direction
-        x = x + 200;
+        x = x + 250;
         //use data form the database to display the cars in y direction
         y = displayHeight - allPlayers[plr].distance;
         cars[index-1].x = x;
