@@ -8,17 +8,27 @@ var database;
 
 var form, player, game;
 
-var cars, car1, car2, car3, car4;
+var cars, runner1, runner2;
 
-var track, car1_img, car2_img, car3_img, car4_img;
+var track, runner1_img, runner2_img;
+
+var ground,ground1,hurdleimg;
+var ground,ground1,invisibleGround,invisibleGround1;
+var restartImg,gameOverImg,gameOver,restart;
+
+var cloudsGroup;
+var obstaclesGroup;
 
 function preload(){
   track = loadImage("../images/track.jpg");
-  car1_img = loadImage("../images/car1.png");
-  car2_img = loadImage("../images/car2.png");
-  car3_img = loadImage("../images/car3.png");
-  car4_img = loadImage("../images/car4.png");
-  ground = loadImage("../images/ground.png");
+  runner1_img = loadImage("../images/runner1.png");
+  runner2_img = loadImage("../images/runner2.png");
+  groundImage = loadImage("../images/ground2.png");
+  ground1Image = loadImage("../images/ground2.png");
+  cloudImage = loadImage("cloud.png");
+  hurdleimg = loadImage("h.png");
+  gameOverImg = loadImage("gameOver.png");
+  restartImg = loadImage("restart.png");
 }
 
 function setup(){
@@ -27,11 +37,13 @@ function setup(){
   game = new Game();
   game.getState();
   game.start();
+  cloudsGroup = new Group();
+  obstaclesGroup = new Group();
 }
 
 
 function draw(){
-  if(playerCount === 4){
+  if(playerCount === 2){
     game.update(1);
   }
   if(gameState === 1){

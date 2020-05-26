@@ -1,9 +1,8 @@
 class Player {
   constructor(){
     this.index = null;
-    this.distance = 0;
     this.name = null;
-    this.rank = null;
+    this.score = 0;
   }
 
   getCount(){
@@ -19,17 +18,17 @@ class Player {
     });
   }
 
-  getRank(){
-    var playerRank = database.ref('carsAtEnd');
-    playerRank.on("value",(data)=>{
-      this.rank = data.val();
+  getscore(){
+    var playerscore = database.ref('score');
+    playerscore.on("value",(data)=>{
+      this.score = data.val();
     })
   }
 
-  static updateRank( rank ){
+  static updatescore( score ){
     database.ref('/').update(
       {
-        'carsAtEnd': rank
+        'score': score
       }
     )
   }
@@ -38,8 +37,7 @@ class Player {
     var playerIndex = "players/player" + this.index;
     database.ref(playerIndex).set({
       name:this.name,
-      distance:this.distance,
-      rank:this.rank
+      score:this.score
 
     });
   }
